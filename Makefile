@@ -21,16 +21,13 @@ else ifeq ($(CHAPTER), 9)
 	LAB := 6
 endif
 
-test:
+utest:
 	bash move.sh
-	python3 overwrite.py $(CHAPTER)
 ifdef INITPROC
 	cp -f user/build/elf/ch$(CHAPTER)b_usertest.elf user/build/elf/ch$(CHAPTER)b_initproc.elf
 endif
 	make -C ../os run | tee stdout-ch$(CHAPTER)
 	python3 check/ch$(CHAPTER).py < stdout-ch$(CHAPTER)
-# ifeq ($(LAB), 6)	
-# 	make -C ../os run LOG=TRACE | tee stdout-log-ch$(CHAPTER)
-# 	python3 check/ch$(CHAPTER).py < stdout-log-ch$(CHAPTER)
-# endif	
+
+
 .PHONY: test

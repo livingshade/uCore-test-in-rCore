@@ -31,14 +31,14 @@ userprogs=("ch2b_hello_world"
 "ch8b_usertest")  
 
 
-ucoredir="./ucore/user/build"
 
 
-pushd "./ucore/user"
+pushd "./ucore"
 make clean
 make BASE=1 CHAPTER=8
 popd
 
+ucoredir="./ucore/build/bin"
 builddir="./user/build"
 
 mkdir -p "${builddir}/elf"
@@ -47,10 +47,7 @@ mkdir -p "${builddir}/app"
 objcopy="riscv64-unknown-elf-objcopy"
 for i in ${userprogs[@]};
 do
-    touch "${builddir}/app/${i}.rs"
-    cp "${ucoredir}/riscv64/${i}" "${builddir}/elf/${i}.elf"
+    cp "${ucoredir}/${i}" "${builddir}/elf/${i}.elf"
 done
-
-rm -rf "./user/src/bin"
 
 exit 0

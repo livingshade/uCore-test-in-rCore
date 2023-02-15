@@ -31,7 +31,7 @@ userprogs=("ch2b_hello_world"
 "ch8b_usertest")  
 
 
-ucoredir="./ucore/user/build/riscv64"
+ucoredir="./ucore/user/build"
 
 
 pushd "./ucore/user"
@@ -41,11 +41,14 @@ popd
 
 builddir="./user/build"
 
+mkdir -p "${builddir}/elf"
+mkdir -p "${builddir}/app"
+
 objcopy="riscv64-unknown-elf-objcopy"
 for i in ${userprogs[@]};
 do
     touch "${builddir}/app/${i}.rs"
-    cp "${ucoredir}/${i}" "${builddir}/elf/${i}.elf"
+    cp "${ucoredir}/riscv64/${i}" "${builddir}/elf/${i}.elf"
 done
 
 rm -rf "./user/src/bin"

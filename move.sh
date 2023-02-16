@@ -32,15 +32,15 @@ userprogs=("ch2b_hello_world"
 
 
 
-
 pushd "./ucore"
 make clean
 make BASE=1 CHAPTER=8
 popd
 
-ucoredir="./ucore/build/bin"
+ucoredir="./ucore/build/riscv64"
 builddir="./user/build"
-
+rm -rf "${builddir}/elf"
+rm -rf "${builddir}/app"
 mkdir -p "${builddir}/elf"
 mkdir -p "${builddir}/app"
 

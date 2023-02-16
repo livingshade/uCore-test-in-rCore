@@ -2,6 +2,8 @@ user/*
 user
 ucore/*
 ucore
+rcore/*
+rcore
 .idea
 __pycache__
 stdout-ch8
